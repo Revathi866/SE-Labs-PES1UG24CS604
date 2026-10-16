@@ -1,53 +1,94 @@
-# Lab 5: Static Code Analysis — Warehouse Stock Manager
+# Lab 5 — Static Code Analysis
 
-**Your file:** `warehouse_stock_manager.py`
-**Python:** 3.10 or newer
+## Overview
 
-Follow the lab handout for the full instructions.
+This lab focuses on improving the code quality, formatting, and security of a Python-based warehouse stock management program. Three static analysis tools — Pylint, Bandit, and Flake8 — were used to identify issues and verify the improvements.
 
-## About the program
+## Original Repository
 
-A warehouse stock manager. It receives and issues stock per SKU, flags items that need reordering, saves stock levels to a JSON file and lets a supervisor adjust a SKU's quantity with a formula.
+The original assignment and source code can be found here:
 
-The code works, but only just. It has quality, style and security problems of the kind Pylint, Flake8 and Bandit are built to find.
+https://github.com/SETAPESU26/L5_54_warehouse-stock
 
-## What to do
+This repository contains my Lab 5 submission as part of the SE Labs repository.
 
-1. **Run it first** and read the output carefully:
-   ```bash
-   python warehouse_stock_manager.py
-   ```
-   It runs a short built-in demo and prints the results; it does not ask for input. Read every line and ask whether a sensible program would print that. Not every problem in this file is something a tool will flag, so pay attention to output that looks wrong.
+## Objectives
 
-2. **Install the tools:**
-   ```bash
-   python -m pip install pylint bandit flake8
-   ```
+- Identify code quality issues using Pylint.
+- Detect potential security problems using Bandit.
+- Check Python formatting and style using Flake8.
+- Fix the reported issues and rerun the tools.
+- Compare the results before and after making changes.
 
-3. **Run the analysis** and save the reports:
-   ```bash
-   python -m pylint warehouse_stock_manager.py > pylint_report.txt
-   python -m bandit -r warehouse_stock_manager.py > bandit_report.txt
-   python -m flake8 warehouse_stock_manager.py > flake8_report.txt
-   ```
-   Use the `python -m` form: it works everywhere, including Windows where a bare `pylint` is often "not recognized". The tools exit with a non-zero status whenever they find issues; that is expected, not an error. In Windows PowerShell 5.1, `>` saves files as UTF-16; if a report looks garbled, use `python -m pylint warehouse_stock_manager.py | Out-File -Encoding utf8 pylint_report.txt` instead.
+## Tools Used
 
-4. **Document the issues** in `issues.md` using this table (at least 4 rows, high and medium severity first):
+| Tool | Purpose |
+|---|---|
+| Pylint | Checks code quality, naming, documentation, and common programming issues. |
+| Bandit | Detects potential security problems in Python code. |
+| Flake8 | Checks Python style and formatting issues. |
 
-   | Issue | Type | Line(s) | Description | Fix Approach |
-   |-------|------|---------|-------------|--------------|
-   | ... | ... | ... | ... | ... |
+## Files in This Folder
 
-5. **Fix the code.** Fix at least 4 of the issues you documented, then rerun all three tools to confirm they are gone. Repeat until you are satisfied. The program should still do its job when you are done.
+| File | Description |
+|---|---|
+| `warehouse_stock_manager.py` | Updated warehouse stock management program. |
+| `pylint_report.txt` | Pylint report before fixes. |
+| `bandit_report.txt` | Bandit report before fixes. |
+| `flake8_report.txt` | Flake8 report before fixes. |
+| `pylint_report_after.txt` | Pylint report after fixes. |
+| `bandit_report_after.txt` | Bandit report after fixes. |
+| `flake8_report_after.txt` | Flake8 report after fixes. |
+| `issues.md` | Summary of issues found and their fixes. |
+| `reflection.md` | Lab reflection and learning outcomes. |
 
-6. **Reflect.** Answer the four reflection questions from the handout in `reflection.md`.
+## Setup
 
-## Deliverables
+Create and activate a Python virtual environment:
 
-1. `warehouse_stock_manager.py`: your cleaned version, with at least 4 issues fixed.
-2. `issues.md`: the completed issue table.
-3. `reflection.md`: your answers to the reflection questions.
+```bash
+python3 -m venv venv
+source venv/bin/activate
+```
 
-**Target:** aim for a Pylint score above 9.5 on your final file. A perfect 10.00/10 is very good.
+Install the required tools:
 
-Be ready to explain the bugs you found and how you fixed them. You may be called on to present.
+```bash
+pip install pylint bandit flake8
+```
+
+## Running the Program
+
+Run the warehouse stock manager:
+
+```bash
+python warehouse_stock_manager.py
+```
+
+The program demonstrates stock operations, saves and loads stock data, and prints a warehouse stock report.
+
+To enable supervisor adjustments, set the `WAREHOUSE_SUPERVISOR_PASSWORD` environment variable before running the program.
+
+## Running Static Analysis
+
+Run each tool and save its report:
+
+```bash
+pylint warehouse_stock_manager.py > pylint_report_after.txt
+bandit -r warehouse_stock_manager.py > bandit_report_after.txt
+flake8 warehouse_stock_manager.py > flake8_report_after.txt
+```
+
+## Results
+
+The final checks produced the following results:
+
+- **Pylint:** 10.00/10.
+- **Bandit:** No issues identified.
+- **Flake8:** No style issues reported.
+
+The original reports are retained to compare the findings before and after the fixes.
+
+## Learning Outcomes
+
+This lab provided practical experience in using static analysis tools, identifying security and code quality issues, improving Python code, and documenting the results of the analysis.
